@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<div class="container-fluid mt-3" style="margin-bottom:20px;">
+    <img src="{{c.image.url}}" width="100%" height="500px">
+</div>
+
+<div class="container-fluid mt-1" style="margin-bottom:20px;">
+    <h3 class="text-center">{{c.name}}</h3>
+    <p style="line-height:2;text-align:center;">{{c.desc}}</p>
+
+</div>
+
+<!--<div class="container-fluid mt-1" style="margin-bottom:100px;">-->
+<!--    <h3 class="text-center"><u>PRODUCTS</u></h3>-->
+
+
+<!--</div>-->
+<div class="container-fluid mt-4 rounded rounded-5" style="margin-bottom:100px;">
+
+
+    <div class="row">
+{% for i in p %}
+
+
+<div class="col-md-4"> <div class="card" style="width: 25rem;">
+  <img src="{{i.image.url}}" class="card-img-top p-2" alt="" height="350px" width="100%">
+  <div class="card-body">
+      <h5 class="card-title" style="font-weight:bold;">{{i.name}}</h5>
+    <p class="card-text" style="text-align:justify;">{{i.desc}}</p>
+      <p class="card-text" style="text-align:justify;">₹{{i.price}}</p>
+
+    <a href="{% url 'shop:prodetails' i.name %}" class="btn btn-primary">Details</a>
+      <a href="{% url 'cart:addtocart' i.name %}" class="btn btn-info">Add to cart</a>
+
+
+
+
+  </div>
+   </div>
+</div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}

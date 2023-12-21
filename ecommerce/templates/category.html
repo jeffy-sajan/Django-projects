@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+
+<body>
+
+{% block content %}
+
+<div>
+    <img src="{% static 'images/banner23.jpg' %}" height="625px" width="1519px">
+</div>
+
+<div class="container-fluid mt-4" style="margin-bottom:100px;">
+    <h3 class="text-center"><u>OUR COLLECTIONS</u></h3>
+    <p style="line-height:1.8;text-align:justify;">eCommerce websites have become an integral part of any business’
+        success. The increase in online sales during the pandemic saw business owners moving from physical storefronts
+        to digital solutions to sell online, helping to expand their reach and increase revenue.Whether you’re a
+        beginner or already have a physical store, building an eCommerce site requires careful attention to design,
+        aesthetics, navigation, and accessibility. These elements are vital for leaving a lasting impression and
+        delivering a smooth shopping experience.</p>
+
+</div>
+
+
+<div class="container-fluid mt-4" style="margin-bottom:100px;">
+    <h3 class="text-center"><u>ALL CATEGORIES</u></h3>
+
+    <br>
+    <br>
+
+<div class="container-fluid mt-4 rounded rounded-5" style="margin-bottom:100px;">
+
+    <div class="row">
+
+{% for i in category %}
+
+
+<div class="col-md-4"> <div class="card" style="width: 25rem;">
+  <img src="{{i.image.url}}" class="card-img-top p-2" alt="" height="350px" width="100%">
+  <div class="card-body">
+      <h4 class="card-title" style="font-weight:bold;text-align:center">{{i.name}}</h4>
+    <p class="card-text" style="text-align:justify;">{{i.desc}}</p>
+    <a href="{% url 'shop:allproducts' i.name %}" class="btn btn-primary">VIEW</a>
+
+
+  </div>
+   </div>
+</div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+
+{% endblock %}
+</body>

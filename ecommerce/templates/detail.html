@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container-fluid mt-1" style="margin-bottom:100px;">
+    <h3 class="text-center"><u>PRODUCT DETAILS</u></h3>
+</div>
+
+
+    <div class="container-fluid mt-4" style="margin-bottom:100px;">
+        <div class="row">
+            <div class="col-sm-5">
+    <img src="{{p.image.url}}"  width="500px" height="350px"></div>
+            <div class="col-sm-5">
+        <h3>Brand name: {{p.name}}</h3><br>
+        <h4>Desc: {{p.desc}}</h4><br>
+        <h4> ₹ {{p.price}}</h4><br>
+                {% if user.is_superuser == False %}
+
+                {% if p.stock <= 0 %}
+                <h4>Out of Stock</h4>
+                {% else %}
+        <a href="{% url 'cart:addtocart' p.name %}" class="btn btn-primary">Add to cart</a>
+                {% endif %}
+
+               {% else %}
+                {% if p.stock <= 0 %}
+                <h4>Out of stock</h4>
+                <a href="{% url 'admin:index' %}" class="btn btn-primary">Add stock</a>
+                {% else %}
+                <h4>Product in stock</h4>
+            {% endif %}
+                {% endif %}
+
+
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

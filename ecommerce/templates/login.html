@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<center>
+    <h2 style="padding-top:50px;text-decoration:underline;">LOGIN PAGE</h2>
+</center>
+
+
+<form method="POST" >
+    {% csrf_token %}
+
+   <div class="mb-3">
+  <label  class="form-label">Username:  {% if messages %}
+{% for i in messages %}
+
+<ul>
+    <li>{{i}}</li>
+</ul>
+
+{% endfor %}
+{% endif %}</label>
+  <input type="text" class="form-control" name="u" placeholder="enter the username">
+</div>
+     <div class="mb-3">
+<label  class="form-label">Password:</label>{% if messages %}
+{% for i in messages %}
+
+<ul>
+    <li>{{i}}</li>
+</ul>
+
+{% endfor %}
+{% endif %}
+  <input type="password" class="form-control" name="p" placeholder="enter the password">
+</div>
+
+    <div class="col-12">
+     <input type="submit" class="form-control" >
+  </div>
+
+</form>
+
+
+
+
+{% endblock %}
+
+</body>
+</html>

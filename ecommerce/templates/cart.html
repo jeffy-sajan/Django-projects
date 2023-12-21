@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if not  c %}
+<div class="container mt-3">
+    <h3 class="text-center" style="padding-top:15px;">Cart is empty</h3>
+    <h5 class="text-center text-info"><a href="{% url 'shop:allcat' %}">Continue Shopping</a> </h5>
+
+</div>
+
+{% else %}
+<div class="container-fluid m-3">
+<div class="row">
+    <h2 class="text-center">SHOPPING CART</h2>
+    <div class="col-sm-7">
+        <table class="table table-bordered">
+          <tr>  <th colspan="5" class="text-center" >CART ITEMS</th></tr>
+            {% for i in c %}
+            <tr><td><img src="{{i.product.image.url}}" height="180px" width="200px"></td>
+            <td><b>{{i.product.name}}</b></td>
+                <td><b>Product id: {{i.product.category}}</b><br>
+                <b>Unit Price: ₹{{i.product.price}}</b><br>
+                    <b>Quantity:{{i.quantity}}* ₹{{i.product.price}}</b>
+                </td>
+
+                <td><b> Subtotal: ₹{{i.subtotal}}</b></td>
+
+                <td><a href="{% url 'cart:addtocart' i.product.name %}"><i style="color:black;font-size:18px"; class="fa-solid fa-circle-plus"></i></a>
+                <a href="{% url 'cart:prodec' i.product.name %}"><i style="color:black;font-size:18px"; class="fa-solid fa-circle-minus"></i></a>
+                <a href="{% url 'cart:prodel' i.product.name %}"><i style="color:black;font-size:18px"; class="fa-solid fa-trash"></i></a>
+                </td>
+
+
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+    <div class="col-sm-4" style="position:relative">
+        <table class="table table-bordered">
+       <tr> <th colspan="4" class="text-center">CHECK OUT</th></tr>
+            <tr><td class="text-center"><b>TOTAL: <span class="text-warning"> ₹{{total}}</span></b></td></tr>
+        </table>
+        <a href="{% url 'cart:orderform' %}" class="btn btn-info text-dark"><b>Place Order</b></a>
+        <a href="{% url 'shop:allcat' %}" class="btn btn-info text-dark" style="position:absolute;right:0;">Continue Shopping</a>
+    </div>
+</div>
+
+</div>
+{% endif %}
+{% endblock %}
