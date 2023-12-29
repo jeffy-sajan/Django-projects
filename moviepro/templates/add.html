@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<center>
+    <h2 style="padding-top:50px;">Add Movie Details</h2>
+</center>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+<table>
+    {{form.as_table}}
+</table>
+
+    <input type="submit">
+
+    </form>
+
+{% endblock %}
+
+</body>
+</html>

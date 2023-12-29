@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<center>
+    <h2 style="padding-top:50px;">MOVIE DETAILS</h2>
+</center>
+<br>
+<br>
+
+
+
+    <table class="table table-bordered">
+
+    <tr>
+        <th>COVER</th>
+        <td><img src="{{movie.cover.url}}" width="250" height="300"></td>
+
+
+
+    </tr>
+
+    <tr>
+        <th>TITLE:</th>
+        <td>{{movie.title}}</td>
+    </tr>
+
+    <tr>
+        <th>RELEASED IN:</th>
+        <td>{{movie.year}}</td>
+    </tr>
+    <tr>
+        <th>DESCRIPTION:</th>
+        <td>{{movie.description}}</td>
+    </tr>
+
+
+        </tr>
+
+
+
+</table>
+
+
+
+
+{% endblock %}
+
+</body>
+</html>
